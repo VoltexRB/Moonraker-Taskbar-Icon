@@ -95,7 +95,7 @@ namespace Moonraker_Taskbar_Icon
                 while (true)
                 {
                     refreshIcon();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(60000);
                 }
             }
 
