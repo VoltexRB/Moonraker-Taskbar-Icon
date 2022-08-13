@@ -43,9 +43,19 @@ namespace Moonraker_Taskbar_Icon
                     ContextMenu = new ContextMenu(new MenuItem[] {new MenuItem("Configure", Configure), new MenuItem("Exit", Exit)}),
                     Visible = true
                 };
+                trayIcon.Click += Clicked;
                 refreshThread = new Thread(refreshIconThread);
                 refreshThread.IsBackground = true;
                 refreshThread.Start();
+            }
+
+            void Clicked(object sender, EventArgs e)
+            {
+                IPAddress outIP = IPAddress.None;
+                if (Properties.Settings.Default.IPAdress != "" && IPAddress.TryParse(Properties.Settings.Default.IPAdress, out outIP))
+                {
+                    System.Diagnostics.Process.Start("http://" + outIP.ToString());
+                }
             }
 
             void Exit(object sender, EventArgs e)
@@ -85,7 +95,7 @@ namespace Moonraker_Taskbar_Icon
                 while (true)
                 {
                     refreshIcon();
-                    Thread.Sleep(60000);
+                    Thread.Sleep(3000);
                 }
             }
 
