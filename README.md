@@ -1,5 +1,5 @@
 # Moonraker-Taskbar-Icon
-Small Icon in the Taskbar that shows Moonraker Progress
+Small Icon in the Taskbar that shows Moonraker Progress. Right click the Application to either exit or set IP-Adress and Progress Color
 
 Explanation of the shortcuts:
 
