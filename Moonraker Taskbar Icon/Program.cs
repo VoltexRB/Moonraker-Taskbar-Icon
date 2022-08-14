@@ -51,6 +51,7 @@ namespace Moonraker_Taskbar_Icon
 
             void Clicked(object sender, EventArgs e)
             {
+                if (((MouseEventArgs)e).Button == MouseButtons.Right) return;
                 IPAddress outIP = IPAddress.None;
                 if (Properties.Settings.Default.IPAdress != "" && IPAddress.TryParse(Properties.Settings.Default.IPAdress, out outIP))
                 {
@@ -123,7 +124,7 @@ namespace Moonraker_Taskbar_Icon
                         var content = client.GetAsync(completeURL).Result.Content;
                         string contentstring = content.ReadAsStringAsync().Result;
                         if (contentstring.Contains("\"is_active\": false") || contentstring.Contains("\"progress\": 1.0"))
-                            progress = "OK";
+                            progress = "ok";
                         else
                             progress = contentstring.Substring(contentstring.IndexOf("\"progress\":") + "\"progress\":".Length + 3, 2);
                     }
